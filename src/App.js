@@ -22,5 +22,5 @@ function App() {
 export default App;
 
 //Task List:
-//1. Render BubblePage as a PrivateRoute dafdafas
+//1. Render BubblePage as a PrivateRoute 
 //2. Build the logout button to call the logout endpoint, remove the localStorage Item and redirect to the login page.
