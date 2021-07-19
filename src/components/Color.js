@@ -16,6 +16,7 @@ const Color = (props) => {
     }
 
     const handleEdit = (e) => {
+        e.preventDefault();
         setEditColor(color);
         toggleEdit(true);
     }

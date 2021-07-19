@@ -5,10 +5,12 @@ import ColorList from "./ColorList";
 import fetchColorService from '../services/fetchColorService';
 import axiosWithAuth from "../helpers/axiosWithAuth";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const BubblePage = props => {
   const [colors, setColors] = useState([]);
   const [editing, setEditing] = useState(false);
+  const { push } = useHistory();
 
   useEffect(() => {
     fetchColorService()
@@ -25,9 +27,11 @@ const BubblePage = props => {
   };
 
   const saveEdit = (editColor) => {
-    axiosWithAuth().put(`/colors/${editColor.id}`)
+    axiosWithAuth().put(`/colors/${editColor.id}`, editColor)
     .then(res => {
-      setColors(res.data)
+      console.log(res)
+      fetchColorService()
+      .then(res => setColors(res.data))
     })
     .catch(err => console.log(err))
   };
