@@ -1,10 +1,16 @@
 import React from 'react';
+import axiosWithAuth from '../helpers/axiosWithAuth';
 
 const Color = (props) => {
     const {color, setEditColor, toggleEdit, deleteColor} = props;
 
     const handleDelete = (e) => {
         e.stopPropagation();
+        axiosWithAuth().delete(`/colors/${color.id}`)
+        .then(res => {
+          console.log(res.data)
+        })
+        .catch(err => {console.log(err)})
         deleteColor(color);
         toggleEdit(false);
     }
